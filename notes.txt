@@ -1,0 +1,40 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+- Audio coding
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+- Traitement du signal
+traitement : analyse, communication et stockage, synthèse
+signal : mesure physique contenant de l'information
+information : ce qui aide à la décision
+
+Quantité d'information
+
+Décision : binaire, discrète, continue (mais seuil de perception)
+
+exemple :
+Guidage itinéraire : droite/gauche/tout-droit/STOP
+Devine un nombre (réponse + ou -) : navigation dans un arbre
+	- meilleur stratégie avec a priori équiprobable
+	- meilleur stratégie si 0 la moitié du temps
+Qui est-ce ?
+	- meilleure stratégie est celle qui élimine 50% (ou au plus proche) des options.
+
+
+Entropie de Shannon:
+la quantité de décision binaire à faire pour reproduire le message
+
+exemple : screenshot itinéraire vs. droite/gauche/tout-droit/STOP
+bitmap 24 bits : 3270 ko = 26'160'000 bits !
+png (sans perte) : 572 ko = 4'576'000 bits‬
+jpg (avec perte) : 297 ko = 2'376'000 bits
+old school : droite-droite-gauche-gauche-STOP = 10 bits
+
+Problème :
+01001101101001010101 à la même entropie de Shannon que 010101010101
+Pourtant le deuxième est beaucoup plus prédictible.
+Pourquoi ?
+
+Prendre en compte la auto-similarité dans le temps (ou l'espace, pour l'image)
+-> Entropie de Wiener
+
