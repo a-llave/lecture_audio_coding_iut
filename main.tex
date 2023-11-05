@@ -118,21 +118,21 @@ Pensons à une science... \pause la \textbf{biologie} :
 \pause
 \begin{itemize}
     \item la biologie est faite par les... biologistes :)
-    \item mots-clés : ADN, cellule, microscope, organisme, vivant...
+    \item mots-clés : \textbf{ADN, cellule, microscope, organisme, vivant}...
 \end{itemize}
 
 \end{frame}
 
 \begin{frame}{\og Traitement du signal \fg{} ???} %-----------------------------------------------------
 
-Et maintenant le traitement du signal :
+Et maintenant le \textbf{traitement du signal} :
 \pause
 \includegraphics[width=\textwidth]{fig/search_results_signal_proc.jpg}
 \pause
 \begin{itemize}
     \item le traitement du signal est fait par les... ? \pause traiteur-euses ? \pause sémaphoricien-nes ?
     \pause
-    \item mots-clés : sinusoïde, quantification, binaire. C'est tout ?  :(
+    \item mots-clés : \textbf{sinusoïde, quantification, binaire}. C'est tout ?  :(
 \end{itemize}
 
 \end{frame}
@@ -401,9 +401,9 @@ Codage de texte = \og Qui est-ce ? \fg{}
         \begin{itemize}
             \item Pour les redondances de symbole : entropie de Shannon
             \item Pour les redondances temporelle : entropie de Wiener
-            \begin{equation}
-            	\xi = \frac{\left(\Pi\limits_{i=1}^N P_i \right)^\frac{1}{N}}{\sum\limits_{i=1}^N P_i}
-            \end{equation}
+            \begin{equation*}
+            	\xi = \frac{\left(\Pi\limits_{i=1}^N P_i \right)^\frac{1}{N}}{\frac{1}{N}\sum\limits_{i=1}^N P_i}
+            \end{equation*}
             avec $P_i$ la puissance du spectre à la fréquence $i$.
             \item $\xi \in [0, 1]$ quantifie l'aplatissement du spectre
         
@@ -420,13 +420,21 @@ Codage de texte = \og Qui est-ce ? \fg{}
 
 \begin{columns}
    \begin{column}{0.6\textwidth}
-
-        Idée :
+		
+		Idée :
         \begin{itemize}
+	        \item Je peux prédire l'échantillon présent à partir du passé: 
+	        \begin{equation*}
+	       		x_n = \underbrace{f(x_{n-1}, x_{n-2}, ..., x_{n-P})}_{\hat{x}_n}  + \epsilon_n
+	        \end{equation*}
+	        \item Quelle approximation pour $f(.)$ ? $\rightarrow$ combinaison linéaire
+	        \begin{equation*}
+	        	\hat{x}_n = \sum\limits_{i=1}^N a_i . x_{n-i}
+	        \end{equation*}
             \item Décorréler le signal\\
             $\rightarrow$ trouver un filtre \og blanchisseur \fg{}
             \item le signal \og blanchi \fg{} est moins puissant que l'original \\
-            $\rightarrow$ moins de bits nécessaires pour un même précision
+            $\rightarrow$ moins de bits pour une même précision
         \end{itemize}
         
    \end{column}
@@ -434,6 +442,30 @@ Codage de texte = \og Qui est-ce ? \fg{}
 		
    \end{column}
 \end{columns}
+\end{frame}
+
+\begin{frame}{Codage par prédiction linéaire - exemple} %-----------------------------------------------------
+
+
+\begin{columns}
+   \begin{column}{0.2\textwidth}
+	
+        \tiny Idée :
+        \begin{itemize}
+            \item Décorréler le signal\\
+            $\rightarrow$ trouver un filtre \og blanchisseur \fg{}
+            \item le signal \og blanchi \fg{} est moins puissant que l'original \\
+            $\rightarrow$ moins de bits pour une même précision
+        \end{itemize}
+        
+   \end{column}
+   \begin{column}{0.8\textwidth}
+		\animategraphics[loop,controls,width=\textwidth]{10}{fig/lpc_speech_anime/lpc_speech_}{0}{99}
+
+   \end{column}
+\end{columns}
+
+
 \end{frame}
 
 \begin{frame}{Applications} %-----------------------------------------------------
@@ -516,10 +548,15 @@ Codage de texte = \og Qui est-ce ? \fg{}
 \begin{frame}{Quoi perdre ?} %-----------------------------------------------------
 \begin{columns}
    \begin{column}{0.6\textwidth}
-		S'appuyer sur les faiblesses de nos sens :
+	
   \begin{itemize}
+  	\item Idée : s'appuyer sur les faiblesses de nos sens
+  	\item Exemple (visuel) :
+  	\begin{itemize}
       \item On est plus sensible à la luminosité que la couleur
-      \item On entend pas un son faible proche d'un son fort
+      \item On entend pas un son faible proche d'un son fort  	
+  	\end{itemize}
+
   \end{itemize}
    \end{column}
    \begin{column}{0.39\textwidth}
@@ -572,12 +609,13 @@ Codage de texte = \og Qui est-ce ? \fg{}
 \begin{frame}{Réseau de neurones : approximateur de fonction} %-----------------------------------------------------
 \begin{columns}
    \begin{column}{0.48\textwidth}
-		%
+		\includegraphics[width=\textwidth]{fig/deeperplayground.jpg}
    \end{column}
    \begin{column}{0.48\textwidth}
 		%
    \end{column}
 \end{columns}
+\url{https://deeperplayground.org/}
 \end{frame}
 
 \begin{frame}{Réseau de neurones auto-encodeur} %-----------------------------------------------------
