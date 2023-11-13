@@ -3,11 +3,18 @@
 - Audio coding
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+- présentation cv, point de vue
+
+- objectif : démystifier le traitement du signal
+
+%%%% intro
+
 - Traitement du signal
 traitement : analyse, communication et stockage, synthèse
 signal : mesure physique contenant de l'information
 information : ce qui aide à la décision
 
+%%%% compression sans pertes : retirer les redondances
 Quantité d'information
 
 Décision : binaire, discrète, continue (mais seuil de perception)
@@ -37,4 +44,41 @@ Pourquoi ?
 
 Prendre en compte la auto-similarité dans le temps (ou l'espace, pour l'image)
 -> Entropie de Wiener
+
+%%%% Compression avec pertes : quoi retirer inutile pour nos sens ?
+
+
+/!\ écoute de mp3, écoute de codage par transformée maison
+
+%%%% Compression par réseau de neurones
+
+- introduction réseau de neurones
+--> architecture, méthode d'apprentissage
+faire jouer avec deeperplayground
+
+-> avec pertes (en général)
+
+/!\ écoute de Descript
+
+%%%% Résumé
+
+- compression sans pertes
+--- besoin de quantifier une limite de compression (entropie)
+--- taux de compression moyen : 2 voire 3 (pour le son, plus pour le texte et l'image)
+
+- compression avec pertes
+--- retirer les données les moins significatives pour nos sens
+--- connaissance en biologie, science de la perception
+--- taux de compression (4,5 voire 11)
+
+- compression avec réseau de neurones
+--- basé sur les technos de compression avec pertes
+--- taux de compression phénoménal 
+
+
+
+
+
+
+
 
