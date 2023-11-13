@@ -14,6 +14,8 @@
 \usepackage{setspace}
 
 \usepackage{animate} % to include a GIF movie
+% \usepackage{multimedia}
+\usepackage{attachfile}
 
 \usepackage{stackengine}
 \usepackage{scalerel}
@@ -351,7 +353,8 @@ Codage de texte = \og Qui est-ce ? \fg{}
         
    \end{column}
    \begin{column}{0.39\textwidth}
-		\includegraphics[width=\textwidth]{fig/wiki_rennes.jpg}
+		\only<1>{\includegraphics[width=\textwidth]{fig/wiki_rennes.jpg}}
+		\only<2>{\includegraphics[width=\textwidth]{fig/huffmann_tree.jpg}}
    \end{column}
 \end{columns}
 \end{frame}
@@ -501,24 +504,10 @@ Codage de texte = \og Qui est-ce ? \fg{}
 \begin{frame}{Quantification} %-----------------------------------------------------
 \begin{columns}
    \begin{column}{0.6\textwidth}
-		
+		\includegraphics[width=\textwidth]{fig/quantif.png}
    \end{column}
    \begin{column}{0.39\textwidth}
-		
-   \end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Codage par transformée : changer de point de vue} %-----------------------------------------------------
-\begin{columns}
-   \begin{column}{0.6\textwidth}
-		La meilleure stratégie ? 
-  
-        
-        
-   \end{column}
-   \begin{column}{0.39\textwidth}
-		
+		Ouvrage de référence : \cite{moreau_tools_2011}
    \end{column}
 \end{columns}
 \end{frame}
@@ -546,6 +535,19 @@ Codage de texte = \og Qui est-ce ? \fg{}
 \end{frame}
 
 
+\begin{frame}{Codage par transformée : exemples} %-----------------------------------------------------
+
+\begin{tabular}{c|c|cccc|cccc}
+   & \makecell{WAV \\ 16 bits}  & \makecell{Quantif. \\ 8 bits}  & \makecell{Transform. \\ 8 bits} & \makecell{Quantif. \\ 4 bits} & \makecell{Transform. \\ 4 bits} & \makecell{MP3 \\ 320} & \makecell{MP3 \\ 128} & \makecell{MP3 \\ 64} & \makecell{MP3 \\ 32} \\
+\hline
+Techno & \textattachfile{audio/techno_mono.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/techno_qs8.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/techno_qt8.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/techno_qs4.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/techno_qt4.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/techno_320.mp3}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/techno_128.mp3}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/techno_64.mp3}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/techno_32.mp3}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} \\
+Voice  & \textattachfile{audio/manif_mono.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/manif_qs8.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/manif_qt8.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/manif_qs4.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/manif_qt4.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/manif_320.mp3}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/manif_128.mp3}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/manif_64.mp3}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/manif_32.mp3}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} \\
+Banjo  & \textattachfile{audio/banjo_mono.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/banjo_qs8.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/banjo_qt8.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/banjo_qs4.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/banjo_qt4.wav}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/banjo_320.mp3}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/banjo_128.mp3}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/banjo_64.mp3}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} & \textattachfile{audio/banjo_32.mp3}{\includegraphics[width=.5cm]{fig/speaker_icon.png}} \\
+\hline
+\end{tabular}
+
+\end{frame}
+
 
 \begin{frame}{Quoi perdre ?} %-----------------------------------------------------
 \begin{columns}
@@ -556,7 +558,7 @@ Codage de texte = \og Qui est-ce ? \fg{}
   	\item Exemple (visuel) :
   	\begin{itemize}
       \item On est plus sensible à la luminosité que la couleur
-      \item On entend pas un son faible proche d'un son fort  	
+      \item On entend pas un son faible proche d'un son fort \cite{zolzer_digital_2008}
   	\end{itemize}
 
   \end{itemize}
@@ -608,50 +610,210 @@ Codage de texte = \og Qui est-ce ? \fg{}
 \end{center}
 \end{frame}
 
+
+\begin{frame}{Notion d'espace d'optimisation} %--------------------------
+Imaginez, un espace...
+\begin{figure}
+\only<1>{\includegraphics[width=.5\textwidth]{fig/space3d_1.png}}
+\only<2>{\includegraphics[width=.5\textwidth]{fig/space3d_2.png}}
+\only<3->{\includegraphics[width=.5\textwidth]{fig/space3d_3.png}}
+\end{figure}
+
+Un vecteur/point de l'espace = un signal
+
+\end{frame}
+
+
+\begin{frame}{Notion d'espace d'optimisation} %--------------------------
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+Imaginez, un espace à N dimensions...
+
+\includegraphics[width=.9\textwidth]{fig/spacend_music.png}
+
+\begin{itemize}
+	\item notion importante : le produit scalaire
+	\begin{itemize}
+		\item ressemblance entre deux vecteurs (signaux)
+	\end{itemize}
+	\item "Malédiction des grandes dimensions" :
+	\begin{itemize}
+		\item 44.1 kHz $\times$ 60 sec. $\times$ stereo = 5,3 millions de dim. !
+	\end{itemize}
+\end{itemize}
+	\end{column}
+    \begin{column}{0.4\textwidth}
+	
+	\begin{myblockred}{Produit scalaire}
+	Soit 2 vecteurs $\xv$ et $\yv$ en 3D :
+	\begin{align*}
+	\xv &= [x_1, x_2, x_3]\\
+	\yv &= [y_1, y_2, y_3]
+	\end{align*}
+	
+	Le prod. scalaire entre $\xv$ et $\yv$ :
+	\begin{align*}
+		<\xv, \yv> &= x_1.y_1 + x_2.y_2 + x_3.y_3 \\
+				&= \sum\limits_{i=1}^3 x_i.y_i \\
+				&= ||\xv|| \ ||\yv|| \ \cos(\widehat{\xv, \yv})
+	\end{align*}
+	\end{myblockred}
+    \end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Perceptron (i)} %-----------------------------------------------------
+
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+Modèle de neurone de grenouille (Rosenblatt, 1958) :
+\begin{align*}
+	y &= f(\theta_0 x_0 + ... + \theta_{n-1} x_{n-1} + b) \\
+	y &= f\left( \sum\limits_{i=0}^{n-1} \theta_i x_i + b\right)
+\end{align*}
+avec $f(.)$ une fonction non-linéaire.
+
+Analogie : "séparer" l'espace des "x" en deux
+
+    \end{column}
+    \begin{column}{0.38\textwidth}
+		\begin{figure}
+		\includegraphics[width=\linewidth]{fig/biological_neuron.png}
+		\caption{Illustration d'un neurone}
+		\end{figure}
+		\begin{figure}
+		\includegraphics[width=0.55\linewidth]{fig/perceptron.jpg}
+		\caption{Modèle simpliste de neurone}
+		\end{figure}
+    \end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Perceptron - (ii)} %-----------------------------------------------------
+
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+Modèle de neurone de grenouille (Rosenblatt, 1958) :
+\begin{align*}
+	y &= f(\theta_0 x_0 + ... + \theta_{n-1} x_{n-1} + b) \\
+	y &= f\left( \sum\limits_{i=0}^{n-1}	 \theta_i x_i + b\right)
+\end{align*}
+avec $f(.)$ une fonction non-linéaire.
+
+Analogie : "séparer" l'espace des "x" en deux
+
+    \end{column}
+    \begin{column}{0.38\textwidth}
+		\begin{figure}
+		\includegraphics[width=.7\linewidth]{fig/plan.png}
+		\caption{Plan défini par le vecteur $\textbf{n}$}
+		\end{figure}
+		\begin{figure}
+		\includegraphics[width=.7\linewidth]{fig/sigmoid.png}
+		\caption{Fonction d'activation sigmoïde}
+		\end{figure}
+    \end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}{Procédure d'apprentissage} %-----------------------------------------------------
+
+On cherche la combinaison des paramètres $\theta_0, \theta_1, ...$ qui minimise la mesure d'erreur $J(\theta_0, \theta_1, ...)$
+
+\begin{columns}
+    \begin{column}{0.48\textwidth}
+Algorithme de la "descente de gradient"
+	\begin{itemize}\small
+		\item suivre la pente descendante de la métrique d'erreur
+		\item (besoin d'un réseau de neurone "dérivable")
+		\item (on rétropropage le gradient de l'erreur pour actualiser les $\theta_i$)
+	\end{itemize}
+En pratique, on a $\sim$10 millions de $\theta_i$ !
+
+\only<2->{
+Challenges :
+\begin{itemize}
+	\item trouver une mesure d'erreur $J(\theta_0, \theta_1, ...)$ pertinente ET "dérivable"
+	\item avoir beaucoup de données
+\end{itemize}
+	}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+    \begin{figure}
+		\includegraphics[width=\textwidth]{fig/gradient_descent.jpg}
+		\caption{Descente de gradient}
+	\end{figure}
+    \end{column}
+\end{columns}
+
+\end{frame}
+
 \begin{frame}{Réseau de neurones : approximateur de fonction} %-----------------------------------------------------
+Voir \url{https://deeperplayground.org/}
+
+\only<1>{
 \begin{columns}
    \begin{column}{0.48\textwidth}
 		\includegraphics[width=\textwidth]{fig/deeperplayground.jpg}
    \end{column}
    \begin{column}{0.48\textwidth}
-		%
+		
    \end{column}
 \end{columns}
-\url{https://deeperplayground.org/}
+}
+
+\only<2>{
+\begin{columns}
+   \begin{column}{0.48\textwidth}
+		\includegraphics[width=\textwidth]{fig/deeperplayground_overfitting_wonoise.jpg}
+   \end{column}
+   \begin{column}{0.48\textwidth}
+		Sur-apprentissage (overfitting):
+		\begin{itemize}
+			\item réseau complexe
+			\item peu de données
+		\end{itemize}
+   \end{column}
+\end{columns}
+}
+
 \end{frame}
 
 \begin{frame}{Réseau de neurones auto-encodeur} %-----------------------------------------------------
-\begin{columns}
-   \begin{column}{0.48\textwidth}
-		%
-   \end{column}
-   \begin{column}{0.48\textwidth}
-		%
-   \end{column}
-\end{columns}
-\end{frame}
 
-\begin{frame}{Réseau de neurones ???} %-----------------------------------------------------
-\begin{columns}
-   \begin{column}{0.48\textwidth}
-		%
-   \end{column}
-   \begin{column}{0.48\textwidth}
-		%
-   \end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Taux de compression : ordres de grandeur} %-----------------------------------------------------
+\begin{figure}
+	\includegraphics[width=\0.8\textwidth]{fig/soundstream_architecture.jpg}
+	\caption{\cite{zeghidour_soundstream_2022}, \cite{kumar_high-fidelity_2023}}
+\end{figure}
 
 \begin{itemize}
-    \item WAV : 2 x 44100 x 16 : 1411.2 kbits/s
-    \item FLAC : 420 - 700 kbps (ratio 2 à 5)
-    \item MP3 : 128 - 320 kbits/s
-    \item audio Descript (deep learning) : 2 - 8 kbits/s
+	\item Dernière innovation de Google et Descript
+	\item Exemples audio : \url{https://descript.notion.site/Descript-Audio-Codec-11389fce0ce2419891d6591a68f814d5}
 \end{itemize}
 
 \end{frame}
+
+\begin{frame}{Réseau de neurones : perspectives} %-----------------------------------------------------
+\begin{columns}
+   \begin{column}{0.48\textwidth}
+		\begin{figure}
+			\includegraphics[width=.5\textwidth]{fig/tancik2021_xy2rgb.jpg}		
+			\caption{\cite{tancik_learned_2021}}
+		\end{figure}				
+
+		
+   \end{column}
+   \begin{column}{0.48\textwidth}
+		Stratégie similaire au codage par prédiction linéaire
+   \end{column}
+\end{columns}
+\end{frame}
+
 
 %==================================================================================================
 %==================================================================================================
@@ -664,38 +826,43 @@ Codage de texte = \og Qui est-ce ? \fg{}
 \end{center}
 \end{frame}
 
-\begin{frame}{Compression sans pertes : codage entropique} %-----------------------------------------------------
-\begin{columns}
-   \begin{column}{0.48\textwidth}
-		%
-   \end{column}
-   \begin{column}{0.48\textwidth}
-		%
-   \end{column}
-\end{columns}
+
+\begin{frame}{Taux de compression : ordres de grandeur} %-----------------------------------------------------
+
+\begin{tabular}{r|rr}
+Codec & Débit (kbits/s) & Taux de compression \\
+\hline
+WAV 				& 1411 & - \\
+FLAC (sans perte) 	& 420 - 700 & 2 - 5 \\
+MP3 (avec pertes) 	& 128 - 320 &  4.5 - 11 \\
+Audio Descript (DNN avec pertes) & 2 - 8 & 175 - 700 \\
+
+\end{tabular}
+\begin{equation*}
+\textbf{WAV : } \underbrace{2}_\text{stereo} \times \underbrace{44100}_{f_s} \times \underbrace{16}_\text{nb. bits} = 1411 \text{ kbits/s}
+\end{equation*}
+
+\pause
+\begin{itemize}
+	\item Compression sans pertes : supprimer les redondances
+	\item Compression avec pertes : supprimer les informations (décisions) les moins significatives
+	\item Compression neuronale (avec pertes) : basé sur l'apprentissage (données et critères d'évaluation)
+\end{itemize}
+
 \end{frame}
 
-\begin{frame}{Compression avec pertes} %-----------------------------------------------------
-\begin{columns}
-   \begin{column}{0.48\textwidth}
-		%
-   \end{column}
-   \begin{column}{0.48\textwidth}
-		%
-   \end{column}
-\end{columns}
+%==================================================================================================
+%==================================================================================================
+%======================================== BIBLE ===================================================	
+\appendix
+\begin{withoutheadline}
+\begin{frame}[allowframebreaks]{Bibliographie}
+	\fontsize{5pt}{5pt}\selectfont
+	\bibliographystyle{apalike}
+	\bibliography{bible}
 \end{frame}
+\end{withoutheadline}
 
-\begin{frame}{Compression neuronale} %-----------------------------------------------------
-\begin{columns}
-   \begin{column}{0.48\textwidth}
-		%
-   \end{column}
-   \begin{column}{0.48\textwidth}
-		%
-   \end{column}
-\end{columns}
-\end{frame}
 
 %==================================================================================================
 %==================================================================================================
